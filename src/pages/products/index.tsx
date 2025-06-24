@@ -1,7 +1,7 @@
 import {useQuery} from "react-query";
-import {fetcher, QueryKeys} from "../../queryClient.ts";
-import type {Product} from "../../types.ts";
-import ProductItem from "../../components/product/items.tsx";
+import {fetcher, QueryKeys} from "../../queryClient";
+import type {Product} from "../../types";
+import ProductItem from "../../components/product/items";
 
 const ProductList = () => {
     const {data} = useQuery<Product[]>(QueryKeys.PRODUCTS, () => fetcher({
@@ -11,6 +11,7 @@ const ProductList = () => {
     console.log(data)
     return (
         <div>
+            <h2>상품목록</h2>
             <ul className="products">
                 {data?.map(product => (<ProductItem {...product} key={product.id}/>))}
             </ul>
